@@ -21,6 +21,12 @@ function Gerar-Log {
         $log += " - $($av.displayName): Estado $($av.productState)`n"
     }
 
+    $log += "`nMemória RAM:`n"
+    foreach ($m in $diag["Memória RAM"]) {
+    $log += " - Total: $($m.'Memória Total (MB)') MB / Livre: $($m.'Memória Livre (MB)') MB`n"
+    }
+
+
     $log | Out-File -FilePath $logPath -Encoding UTF8
     Write-Host "Log gerado em: $logPath"
 }
